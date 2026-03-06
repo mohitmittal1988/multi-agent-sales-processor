@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  milvus:
+    image: milvusdb/milvus:latest
+    ports:
+      - "19530:19530"
+      - "19121:19121"
+    environment:
+      - "TZ=UTC"
+
+  llm:
+    image: ghcr.io/huggingface/text-generation-inference:latest
+    ports:
+      - "8080:8080"
+    command: ["--model-id", "tiiuae/falcon-7b-instruct"]
+    environment:
+      - "MODEL_CACHE_DIR=/models"
+      - "HF_HOME=/hf"
+    volumes:
+      - ./models:/models
+
+  mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    ports:
+      - "9000:9000"
+    depends_on:
+      - llm
+      - milvus
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mcp

@@ -1,0 +1,5 @@
+order_id,customer,product,quantity,price,date
+1001,Alice,Widget,4,19.99,2023-01-15
+1002,Bob,Gadget,2,29.99,2023-01-20
+1003,Carol,Widget,1,19.99,2023-02-05
+1004,Dave,Thingamajig,3,9.99,2023-02-18
