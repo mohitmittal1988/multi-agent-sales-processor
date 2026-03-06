@@ -22,7 +22,7 @@ Vector Database (Embedding Search)
     ↓
 Relevant Data Retrieved
     ↓
-Claude AI (LLM Processing)
+AI Agent (LLM Processing)
     ↓
 Answer Returned
 ```
