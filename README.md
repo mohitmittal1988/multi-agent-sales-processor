@@ -314,4 +314,4 @@ For issues and questions:
 
 ---
 
-**Made with ❤️ by the Multi-Agent Team**
+**Made with ❤️ by Me (Dr. Mohit Mittal)**
