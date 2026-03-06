@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from agents.claude_agent import ClaudeAgent, SalesAnalyzer
+from agents.agent import ClaudeAgent, SalesAnalyzer
 
 app = FastAPI(title='Multi-agent MCP')
 

@@ -41,7 +41,7 @@ Answer Returned
 ```
 multi-agent-sales-processor/
 ├── agents/                 # AI agent logic
-│   ├── claude_agent.py    # Main agent orchestration
+│   ├── agent.py           # Main agent orchestration
 │   ├── query.py           # Query interface
 │   ├── rag.py             # RAG system
 │   ├── vector_store.py    # Vector database interaction
@@ -259,7 +259,7 @@ docker-compose up
 
 Create `agents/my_agent.py`:
 ```python
-from agents.claude_agent import BaseAgent
+from agents.agent import BaseAgent
 
 class MyAgent(BaseAgent):
     def process(self, data):

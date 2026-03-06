@@ -6,7 +6,7 @@ This repository implements a **multi-agent** retrieval-augmented generation (RAG
    - `ingest.py` loads CSV/JSON sales records and indexes them in a vector store.
    - `vector_store.py` wraps a Milvus collection for storing and searching embeddings.
    - `rag.py` coordinates embedding the query, retrieving documents, and calling an LLM.
-   - `claude_agent.py` illustrates a simple agent orchestrator with a `SalesAnalyzer`.
+   - `agent.py` illustrates a simple agent orchestrator with a `SalesAnalyzer`.
    - `query.py` and `ingest.py` provide CLI utilities.
 
 2. **Vector database** – Milvus runs in Docker Compose (`docker-compose.yml`).
