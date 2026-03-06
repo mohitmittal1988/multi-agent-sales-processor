@@ -7,18 +7,9 @@ services:
       - "19530:19530"
       - "19121:19121"
     environment:
-      - "TZ=UTC"
-
-  llm:
-    image: ghcr.io/huggingface/text-generation-inference:latest
-    ports:
-      - "8080:8080"
-    command: ["--model-id", "tiiuae/falcon-7b-instruct"]
-    environment:
-      - "MODEL_CACHE_DIR=/models"
-      - "HF_HOME=/hf"
+      - COMMON_STORAGETYPE=local
     volumes:
-      - ./models:/models
+      - milvus-data:/var/lib/milvus
 
   mcp:
     build:
@@ -26,9 +17,13 @@ services:
       dockerfile: Dockerfile.mcp
     ports:
       - "9000:9000"
+    environment:
+      - MILVUS_HOST=milvus
+      - MILVUS_PORT=19530
+      - PYTHONUNBUFFERED=1
     depends_on:
-      - llm
       - milvus
+    restart: unless-stopped
 
   streamlit:
     build:
@@ -36,5 +31,11 @@ services:
       dockerfile: Dockerfile.streamlit
     ports:
       - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
     depends_on:
       - mcp
+    restart: unless-stopped
+
+volumes:
+  milvus-data:
